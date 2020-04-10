@@ -11,10 +11,11 @@ namespace ConsoleApp4
             int x = -1;
             do
             {
-                //asd
                 Console.WriteLine("Daca doriti sa introduceti persoane introduceti 1 sau\n\t " +
                     "0 daca doriti sa iesiti sau\n\t 2 daca doriti sa stergeti \n\t 3 editare persoana " +
                     "\n\t 4 afisarea persoanelor in functie de ore \n\t 5 afisarea persoanelor in functie de minute");
+                Console.WriteLine("Daca doriti sa introduceti persoane introduceti 1 sau\n\t 0 daca doriti sa iesiti sau\n\t 2 daca doriti sa stergeti \n\t 3 editare persoana \n\t 4 afisarea persoanelor in functie de ore \n\t 5 afisarea persoanelor in functie de minute");
+
                 bool b;
                 do
                 {
