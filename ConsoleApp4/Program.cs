@@ -8,8 +8,6 @@ namespace ConsoleApp4
        public static List<Person> list = new List<Person>();//intializare lista si declarare de tip pesoana 
         static void Main(string[] args)
         {
-            //asd
-            //asd
             int x = -1;
             do
             {
