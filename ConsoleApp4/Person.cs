@@ -11,6 +11,8 @@ namespace ConsoleApp4
         public string first_name;
         public DateTime date_entry;
         public DateTime date_output;
+        public int seat;
+        public string movie;
         public void Intoducere ()
         {
             Person p = new Person();//crearea unui oviect
