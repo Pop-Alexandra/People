@@ -9,6 +9,7 @@ namespace ConsoleApp4
         static void Main(string[] args)
         {
             //asd
+            //asd
             int x = -1;
             do
             {
