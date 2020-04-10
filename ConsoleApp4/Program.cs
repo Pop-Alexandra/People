@@ -116,6 +116,7 @@ namespace ConsoleApp4
                             Console.WriteLine(p);
                     }
                 }
+                ///p
                 } while (x != 0) ;
                 foreach (Person p in list)
                     Console.WriteLine(p);
