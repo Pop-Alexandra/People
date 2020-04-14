@@ -14,7 +14,7 @@ namespace ConsoleApp4
             m1.dateStart = new DateTime(2020, 4, 10, 17, 40, 00);
             m1.dateFinish = new DateTime(2020, 4, 10, 19, 40, 00);
             m1.freeSeats = 20;
-            movies.Add(m1);
+            movies.Add(m1); 
             Movie m2 = new Movie();
             m2.name = "Vis a vis";
             m2.dateStart = new DateTime(2020, 4, 10, 17, 40, 00);
@@ -25,7 +25,7 @@ namespace ConsoleApp4
             int x = -1;
             do
             {
-                Console.WriteLine("Daca doriti sa cumparati bilet intruduceti 1");
+                Console.WriteLine("Daca doriti sa cumparati bilet intruduceti 1 \n\t daca doriti sa renuntati la un bilet introduceti 2");
                 do
                 {
                     b = true;
@@ -76,6 +76,15 @@ namespace ConsoleApp4
                         }
                         if (pp == false)
                             Console.WriteLine("Nu s-a gasit filmul");
+                        break;
+                    case 2:
+                        Console.WriteLine("Introduceti filmul");
+                        string s = Console.ReadLine();
+                        if (m1.name.ToLower() == s.ToLower())
+                            m1.freeSeats++;
+                        else
+                            m2.freeSeats++;
+                        Console.WriteLine(m1.freeSeats);
                         break;
 
                 }
