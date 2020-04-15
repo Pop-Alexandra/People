@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ConsoleApp4
 {
@@ -17,7 +18,10 @@ namespace ConsoleApp4
             movies.Add(m1); 
             Movie m2 = new Movie();
             m2.name = "Vis a vis";
-            m2.dateStart = new DateTime(2020, 4, 10, 17, 40, 00);
+
+            // Modificat ca sa testez.
+            m2.dateStart = new DateTime(2020, 4, 16, 17, 40, 00); 
+            
             m2.dateFinish = new DateTime(2020, 4, 10, 19, 40, 00);
             m2.freeSeats = 20;
             movies.Add(m2);
@@ -25,6 +29,8 @@ namespace ConsoleApp4
             int x = -1;
             do
             {
+                // Thread.Sleep da un delay acolo unde e pus
+                Thread.Sleep(500);
                 Console.WriteLine("Daca doriti sa cumparati bilet intruduceti 1 \n\t daca doriti sa renuntati la un bilet introduceti 2");
                 do
                 {
@@ -36,12 +42,16 @@ namespace ConsoleApp4
                     catch (Exception e)
                     {
                         b = false;
+                        // Thread.Sleep da un delay acolo unde e pus
+                        Thread.Sleep(500);
                         Console.WriteLine("Nu ati introdus corect");
                     }
                 } while (b == false);
                 switch (x)
                 {
                     case 1:
+                        // Thread.Sleep da un delay acolo unde e pus
+                        Thread.Sleep(500);
                         Console.WriteLine("Numele filmului dorit");
                         string movie = Console.ReadLine();
                         //ToLower-transforma in litere mici
@@ -50,10 +60,18 @@ namespace ConsoleApp4
                         {
                             if (m.name.ToLower() == movie.ToLower())
                             {
+                                // Thread.Sleep da un delay acolo unde e pus
+                                Thread.Sleep(1000);
                                 Console.WriteLine("S-a gasit filmul");
                                 pp = true;
                                 if (m.dateStart < DateTime.Now)
+                                {
+                                    // Thread.Sleep da un delay acolo unde e pus
+                                    Thread.Sleep(1000);
                                     Console.WriteLine("Ati ajuns prea tarziu");
+                                    // Sa nu treaca mai departe daca a gasit filmul si e deja tarziu.
+                                    break;
+                                }
                                 else
                                 {
                                     if (m.freeSeats > 0)
@@ -66,25 +84,77 @@ namespace ConsoleApp4
                                         p1.date_entry = m.dateStart;
                                         p1.date_output = m.dateFinish;
                                         p1.seat = m.freeSeats;
+
+                                        // Modificat ca sa testez.
+                                        // Thread.Sleep da un delay acolo unde e pus
+                                        Thread.Sleep(1000);
+                                        Console.WriteLine("New person created");
                                         m.freeSeats--;
+                                        // Modificat ca sa testez.
+                                        // Thread.Sleep da un delay acolo unde e pus
+                                        Thread.Sleep(1000);
+                                        Console.WriteLine("Ticket purchased");
+                                        // Modificat ca sa testez si sa vad cum merge
+                                        // Thread.Sleep da un delay acolo unde e pus
+                                        Thread.Sleep(1000);
+                                        Console.WriteLine(m.freeSeats + " seats remaining");
                                     }
                                     else
-                                        Console.WriteLine("Nu sunt locuri"); break;
+                                    {
+                                        // Thread.Sleep da un delay acolo unde e pus
+                                        Thread.Sleep(1000);
+                                        Console.WriteLine("Nu sunt locuri");
+                                    }
+                                    break;
                                 }
                             }
 
                         }
                         if (pp == false)
+                        {
+                            // Thread.Sleep da un delay acolo unde e pus
+                            Thread.Sleep(1000);
                             Console.WriteLine("Nu s-a gasit filmul");
+                        }
                         break;
                     case 2:
+                        // Thread.Sleep da un delay acolo unde e pus
+                        Thread.Sleep(1000);
                         Console.WriteLine("Introduceti filmul");
                         string s = Console.ReadLine();
-                        if (m1.name.ToLower() == s.ToLower())
-                            m1.freeSeats++;
-                        else
-                            m2.freeSeats++;
-                        Console.WriteLine(m1.freeSeats);
+                        bool p = false;
+                        foreach (Movie m in movies)
+                        {
+                            if(m.name.ToLower() == s.ToLower())
+                            {
+
+                                // In cazul in care nu a fost vandut niciun bilet, nu trebuie sa fie returnat, nu se poate. Sau cazul in care e prea tarziu.
+                                if (m.freeSeats == 20)
+                                {
+                                    // Thread.Sleep da un delay acolo unde e pus
+                                    Thread.Sleep(1000);
+                                    Console.WriteLine("There are no tickets sold or it is too late! You don't have to do this!");
+                                    break;
+                                }
+                                m.freeSeats++;
+                                p = true;
+                                // Thread.Sleep da un delay acolo unde e pus
+                                Thread.Sleep(1000);
+                                Console.WriteLine("Number of spare seats: " + m.freeSeats);
+                                break;
+                            }
+                        }
+
+                        // Nu e ok cum ai cautat filmul, daca aveai 20 ce faceai? :)
+                        // Nu uita de foreach
+
+                        // if (p == false) Console.WriteLine("This movie does not exist!");
+                        // if (m1.name.ToLower() == s.ToLower())
+                        //     m1.freeSeats++;
+                        // else
+                        //     m2.freeSeats++;
+                        // Console.WriteLine(m1.freeSeats);
+
                         break;
 
                 }
@@ -204,8 +274,8 @@ namespace ConsoleApp4
                   }
                   ///p
                   } while (x != 0) ;*/
-            foreach (Person p in list)
-                Console.WriteLine(p);
+           // foreach (Person p in list)
+           //     Console.WriteLine(p);
 
         }
     }
